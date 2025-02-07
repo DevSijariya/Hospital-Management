@@ -1,5 +1,4 @@
-from odoo import fields, models,api
-from odoo.exceptions import UserError
+from odoo import fields, models
 
 
 class MedicinesDescription(models.Model):

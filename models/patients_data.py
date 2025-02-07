@@ -28,12 +28,12 @@ class PatientDescription(models.Model):
             raise ValidationError("Email is Already Registered Please Use Another Email")
         else:
             match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', vals['email_address']) # Apply Regex for email Vaildation
-            if match==None: 
+            if match is None: 
                 raise ValidationError("Invalid Email Please Use A Valid Email")
         
         #Checking the Mobile Number 
         valid_number = re.match(r'^[6-9][0-9]{9}$', str(vals['mobile_number']))
-        if valid_number == None:
+        if valid_number is None:
             raise UserError("Invalid Mobile Number Please Enter A Valid Number")
         else:
             return super(PatientDescription,self).create(vals)
@@ -49,10 +49,10 @@ class PatientDescription(models.Model):
                     record['age'] = today.year - record.date_of_birth.year
                 else:
                     record['age'] = today.year - record.date_of_birth.year - 1
+                    if record['age']<=-1:
+                        raise ValidationError("Invalid Date Of Birth") # Raising Validation Error for Provding the future date
             else:
                 record['age'] = 0 
-        if record['age']<=-1:
-            raise ValidationError("Invalid Date Of Birth") # Raising Validation Error for Provding the future date
     
     @api.constrains('mobile_number')
     def _check_unique_mobile_number(self):
@@ -71,7 +71,7 @@ class PatientDescription(models.Model):
         """
         for records in self:
             match=re.match('^[a-zA-Z][a-zA-z ]*',records.name)
-            if match==None:
+            if match is None:
                 raise ValidationError("Invaid Patient Name")
             
 
