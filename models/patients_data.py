@@ -27,7 +27,7 @@ class PatientDescription(models.Model):
         if existing_email:
             raise ValidationError("Email is Already Registered Please Use Another Email")
         else:
-            match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', vals['email_address']) # Apply Regex for email Vaildation
+            match = re.match(r'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', vals['email_address']) # Apply Regex for email Vaildation
             if match is None: 
                 raise ValidationError("Invalid Email Please Use A Valid Email")
         
@@ -70,7 +70,7 @@ class PatientDescription(models.Model):
         Checking the Name of the Patient is correct or not
         """
         for records in self:
-            match=re.match('^[a-zA-Z][a-zA-z ]*',records.name)
+            match=re.match(r'^[a-zA-Z][a-zA-z ]*',records.name)
             if match is None:
                 raise ValidationError("Invaid Patient Name")
             

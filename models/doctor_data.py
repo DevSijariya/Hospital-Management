@@ -34,7 +34,7 @@ class DoctorData(models.Model):
         if existing_email:
             raise ValidationError("Email is Already Registered Please Use Another Email")
         else:
-            match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', vals['email_address'])
+            match = re.match(r'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', vals['email_address'])
             if match is None:
                 raise ValidationError("Invalid Email Please Use A Valid Email")
         valid_number = re.match(r'^[6-9][0-9]{9}$', str(vals['mobile_number']))
