@@ -15,7 +15,7 @@ class DoctorData(models.Model):
     patients_id=fields.One2many("patients.description" , inverse_name="doctor_id")
     
     @staticmethod 
-    def patient_precautions(self):
+    def patient_precautions():
         """
         Calling the Wizards using the button
         """
