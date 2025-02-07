@@ -14,7 +14,7 @@ class DoctorData(models.Model):
     specialization=fields.Char("Specialization")
     patients_id=fields.One2many("patients.description" , inverse_name="doctor_id")
 
-    def patient_precautions(self):
+    def _patient_precautions(self):
         """
         Calling the Wizards using the button
         """
