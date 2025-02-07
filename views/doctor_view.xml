@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="doctor_list_view_data" model="ir.ui.view">
+            <field name="name">doctor.list.view.data</field>
+            <field name="model">doctors.data</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+                    <field name="mobile_number"/>
+                    <field name="email_address"/>
+                    <field name="address"/>
+                    <field name="specialization"/>
+                    <button name="patient_precautions" type="object" string="Provide Precautions"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="doctor_form_view_data" model="ir.ui.view">
+            <field name="name">doctor.form.view.data</field>
+            <field name="model">doctors.data</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <group>
+                            <h1><field name="name" placeholder="Name" style="font-size:30px;"/></h1>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="mobile_number"/>
+                                <field name="email_address"/>
+                            </group>
+                            <group>
+                                <field name="address"/>
+                                <field name="specialization"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Patients">
+                                <field name="patients_id"/>
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="doctor_action_id" model="ir.actions.act_window">
+            <field name="name">Doctor Data</field>
+            <field name="res_model">doctors.data</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+    </data>
+        <menuitem id="Doctor_Data" name="Doctors" action="doctor_action_id" parent="Hospitalid"/>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="patient_precaution_view_form" model="ir.ui.view">
+            <field name="name">patient.precautions.view.form</field>
+            <field name="model">patients.wizards</field>
+            <field name="arch" type="xml">
+                <form string="Precautions">
+                    <field name="patients_id" placeholder="select the patient id"/>    
+                    <p>Select the Patient Id</p>
+                    <strong><p>Select the medicines for the patient</p></strong>
+                    <field name="medicine_ids"/>
+                    <group>
+                        <field name="precautions" placeholder="Write The Precautions for the patient"/>
+                    </group>
+                    <footer>
+                        <button string="Discard" special="cancel"/>
+                        <button class="btn-primary"
+                            name="action_delete_data"
+                            type="object"
+                            string="Save Data"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
