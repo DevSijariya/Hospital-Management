@@ -13,8 +13,9 @@ class DoctorData(models.Model):
     image=fields.Image("Image")
     specialization=fields.Char("Specialization")
     patients_id=fields.One2many("patients.description" , inverse_name="doctor_id")
-
-    def _patient_precautions(self):
+    
+    @staticmethod 
+    def patient_precautions(self):
         """
         Calling the Wizards using the button
         """
